@@ -14,8 +14,6 @@ import org.koin.dsl.module
  * 需要依赖注入的类实例，在此声明一个 Koin Module
  */
 val mainModule = module {
-//    viewModel { MainViewModel(get()) }
-//    viewModel { GankListViewModel(get()) }
     viewModel { MainViewModel() }
     viewModel { TypesViewModel(get()) }
     viewModel { GanksViewModel(get()) }
