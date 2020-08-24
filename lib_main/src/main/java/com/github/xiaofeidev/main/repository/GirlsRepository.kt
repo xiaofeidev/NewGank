@@ -13,11 +13,13 @@ class GirlsRepository {
     }
     fun getGirls() = GankDatabase.getInstance().gankDao().queryGankList(GIRL_TYPE)
 
-    suspend fun newGirls() = RetrofitClient.apiCall({ RetrofitClient.service.getGirlList(1, 10)}){
+    suspend fun newGirls() =
+        RetrofitClient.apiCall({ RetrofitClient.service.getGirlList(1, 10)}){
         it.gankBeans
     }
 
-    suspend fun moreGirls(page: Int, count: Int = 10) = RetrofitClient.apiCall({ RetrofitClient.service.getGirlList(page, count)}){
+    suspend fun moreGirls(page: Int, count: Int = 10) =
+        RetrofitClient.apiCall({ RetrofitClient.service.getGirlList(page, count)}){
         it.gankBeans
     }
 }

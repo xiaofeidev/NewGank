@@ -10,7 +10,8 @@ import com.github.xiaofeidev.comm.http.RetrofitClient
 class TypesRepository {
     fun getTypes() = GankDatabase.getInstance().gankDao().queryGankTypeList()
 
-    suspend fun newTypes() = RetrofitClient.apiCall({ RetrofitClient.service.getGankType() }){
+    suspend fun newTypes() =
+        RetrofitClient.apiCall({ RetrofitClient.service.getGankType() }){
         it.gankTypeBeans
     }
 }
