@@ -3,4 +3,4 @@
 
 # 界面预览
 
-<img src="https://github.com/xiaofei-dev/NewGank/blob/master/art/preview1.jpg" width="24%" height="24%"><img src="https://github.com/xiaofei-dev/NewGank/blob/master/art/preview2.jpg" width="24%" height="24%">
+<img src="https://github.com/xiaofei-dev/NewGank/blob/master/art/preview1.jpg" width="100%" height="100%"><img src="https://github.com/xiaofei-dev/NewGank/blob/master/art/preview2.jpg" width="100%" height="100%">
