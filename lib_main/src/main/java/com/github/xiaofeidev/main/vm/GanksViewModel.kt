@@ -42,14 +42,9 @@ class GanksViewModel(val ganksRepository: GanksRepository): BaseViewModel() {
             val result = ganksRepository.newGanks(type)
 
             if (result is DataResult.Success){
-                //是否需要更新数据库
-                //判断网络获取的第一条数据和本地数据库的第一条是否【不】相等
+                //是否需要更新数据库，判断网络获取的第一条数据和本地数据库的第一条是否【不】相等
                 if (result.data.isNotEmpty() && (firstPage.value.isNullOrEmpty() || result.data[0] != firstPage.value?.get(0))){
-                    //手动生成每条数据的 dbId
-                    result.data.forEach {
-                        it.dbId = "${type}_${it.id}"
-                    }
-                    GankDatabase.getInstance().gankDao().saveGankList(result.data)
+                    ganksRepository.saveGanks(type, result.data)
                 } else {
                     isRefreshing.postValue(false)
                 }
