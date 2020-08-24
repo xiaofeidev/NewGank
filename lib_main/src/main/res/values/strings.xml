@@ -1,0 +1,8 @@
+<resources>
+    <string name="comm_search">search</string>
+    <string name="comm_about">关于</string>
+    <string name="comm_retry">重试</string>
+    <string name="comm_loading">加载中…</string>
+    <string name="page_gank">Gank</string>
+    <string name="page_girl">Girls</string>
+</resources>

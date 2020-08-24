@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <item
+        android:id="@+id/page_gank"
+        android:title="@string/page_gank"
+        android:icon="@drawable/ic_gank" />
+
+    <item
+        android:id="@+id/page_girl"
+        android:title="@string/page_girl"
+        android:icon="@drawable/ic_girl" />
+</menu>

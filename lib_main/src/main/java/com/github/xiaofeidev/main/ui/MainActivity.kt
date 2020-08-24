@@ -1,0 +1,84 @@
+package com.github.xiaofeidev.main.ui
+
+import android.app.ProgressDialog
+import android.view.Menu
+import android.view.MenuItem
+import androidx.lifecycle.observe
+import androidx.viewpager2.widget.ViewPager2
+import com.blankj.utilcode.util.ToastUtils
+import com.github.xiaofeidev.base.ui.BaseActivity
+import com.github.xiaofeidev.main.R
+import com.github.xiaofeidev.main.databinding.ActivityMainBinding
+import com.github.xiaofeidev.main.ui.adapter.MainPageAdapter
+import com.github.xiaofeidev.main.vm.MainViewModel
+import kotlinx.android.synthetic.main.activity_main.*
+import org.koin.androidx.viewmodel.ext.android.viewModel
+
+class MainActivity : BaseActivity<ActivityMainBinding>() {
+    private val viewModel by viewModel<MainViewModel>()
+
+    override val layoutId: Int
+        get() = R.layout.activity_main
+
+    override fun perSetContent(){
+        setTheme(R.style.AppTheme);
+    }
+
+    override fun initView() {
+        viewModel.title.value = resources.getString(R.string.page_gank)
+        setSupportActionBar(toolbar)
+        supportActionBar?.setDisplayHomeAsUpEnabled(false)
+        supportActionBar?.setDisplayShowHomeEnabled(false)
+
+        viewPager.adapter = MainPageAdapter(this)
+        viewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback(){
+            override fun onPageSelected(position: Int) {
+                super.onPageSelected(position)
+                val menuItem = navigationBottom.menu.getItem(position)
+                menuItem.setChecked(true)
+                viewModel.title.value = menuItem.title.toString()
+            }
+        })
+
+        navigationBottom.setOnNavigationItemSelectedListener { menuItem ->
+            when (menuItem.itemId) {
+                R.id.page_gank -> {
+                    viewPager.currentItem = 0
+                    viewModel.title.value = menuItem.title.toString()
+                    return@setOnNavigationItemSelectedListener true
+                }
+                else -> {//R.id.girl
+                    viewPager.currentItem = 1
+                    viewModel.title.value = menuItem.title.toString()
+                    return@setOnNavigationItemSelectedListener true
+                }
+            }
+        }
+    }
+
+    override fun initData() {
+        binding.viewModel = viewModel
+    }
+
+    override fun startObserve() {
+        viewModel.apply {
+        }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.menu_main, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.action_search -> {
+                ToastUtils.showShort(R.string.comm_planning)
+            }
+            R.id.action_about -> {
+                ToastUtils.showShort(R.string.comm_planning)
+            }
+        }
+        return super.onOptionsItemSelected(item)
+    }
+}

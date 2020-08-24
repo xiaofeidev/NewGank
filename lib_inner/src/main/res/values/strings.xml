@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="inner_open">从浏览器打开</string>
+    <string name="inner_copy">复制链接</string>
+    <string name="inner_share">分享</string>
+    <string name="inner_girl">Girl</string>
+
+    <string name="copy_success">链接已成功复制至剪贴板</string>
+    <string name="copy_label">gankUrl</string>
+
+    <string name="share_type">text/plain</string>
+    <string name="share_title">分享到</string>
+    <string name="deny_hint">权限遭拒</string>
+    <string name="save_explain">您必须授予应用读写存储设备的权限才能保存图片</string>
+</resources>

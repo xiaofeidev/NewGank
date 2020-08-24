@@ -1,0 +1,81 @@
+apply plugin: 'com.android.library'
+apply from: '../gradles/kotlin_config.gradle'
+
+def app = rootProject.app
+
+android {
+    compileSdkVersion app.compileSdkVersion
+    defaultConfig {
+        minSdkVersion app.minSdkVersion
+        targetSdkVersion app.targetSdkVersion
+        versionCode app.vversionCode
+        versionName app.versionName
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
+        //应用矢量图兼容性方案
+        vectorDrawables.useSupportLibrary = true
+        buildConfigField("boolean", "isLogDebug", String.valueOf(rootProject.ext.isLogDebug))
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [AROUTER_MODULE_NAME: project.getName()]
+            }
+        }
+    }
+
+    buildTypes {
+        debug {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+        encoding "UTF-8"
+    }
+
+//    sourceSets {
+//        main {
+//            jniLibs.srcDirs = ['libs']
+//            manifest.srcFile 'src/main/AndroidManifest.xml'
+//            java {
+//                exclude 'debug/**'
+//            }
+//        }
+//    }
+
+    kotlinOptions {
+        // work-runtime-ktx 2.1.0 and above now requires Java 8
+        jvmTarget = "1.8"
+
+        // Enable Coroutines and Flow APIs
+        freeCompilerArgs += "-Xopt-in=kotlinx.coroutines.ExperimentalCoroutinesApi"
+        freeCompilerArgs += "-Xopt-in=kotlinx.coroutines.FlowPreview"
+    }
+
+    dataBinding {
+        enabled = true
+    }
+}
+
+kapt {
+    arguments {
+        arg("AROUTER_MODULE_NAME", project.getName())
+        arg("eventBusIndex", 'com.solo.eventbus.index.' + project.getName() + 'EventBusIndex')
+    }
+}
+
+dependencies {
+    api fileTree(include: ['*.jar'], dir: 'libs')
+    kapt 'com.alibaba:arouter-compiler:1.2.2'
+    kapt 'com.github.bumptech.glide:compiler:4.11.0'
+    kapt "org.greenrobot:eventbus-annotation-processor:3.2.0"
+
+    kapt "androidx.lifecycle:lifecycle-compiler:$lifecycle_version"
+    kapt "androidx.room:room-compiler:$room_version"
+}

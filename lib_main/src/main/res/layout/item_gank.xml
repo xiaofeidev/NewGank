@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/round_white"
+    android:elevation="4dp">
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:background="?attr/selectableItemBackgroundBorderless"/>
+
+    <com.github.xiaofeidev.round.RoundImageView
+        android:id="@+id/imgImg"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintWidth_percent="0.35"
+        app:layout_constraintDimensionRatio="2:1.5"
+        app:rd_radius="4dp"
+        android:scaleType="centerCrop"
+        android:adjustViewBounds="true"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"/>
+
+    <TextView
+        android:id="@+id/textTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:textColor="@android:color/black"
+        tools:text="Android transferee 快捷的各种类型图片浏览神器"
+        android:maxLines="1"
+        android:singleLine="true"
+        android:ellipsize="end"
+        app:layout_constraintTop_toTopOf="@id/imgImg"
+        app:layout_constraintStart_toEndOf="@id/imgImg"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"/>
+
+    <TextView
+        android:id="@+id/textDesc"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textSize="14sp"
+        android:textColor="@color/comm_66"
+        tools:text="Android transferee 快捷的各种类型图片浏览神器"
+        android:maxLines="2"
+        android:ellipsize="end"
+        app:layout_constraintTop_toBottomOf="@id/textTitle"
+        app:layout_constraintStart_toEndOf="@id/imgImg"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="8dp"/>
+
+    <ImageView
+        android:id="@+id/imgAuthor"
+        android:layout_width="16dp"
+        android:layout_height="16dp"
+        app:layout_constraintStart_toStartOf="@id/textDesc"
+        app:layout_constraintBottom_toBottomOf="@id/imgImg"
+        android:scaleType="fitXY"
+        android:adjustViewBounds="true"
+        android:src="@drawable/ic_author"/>
+
+    <TextView
+        android:id="@+id/textAuthor"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textSize="12sp"
+        android:textColor="@color/comm_66"
+        tools:text="Espoir"
+        app:layout_constraintStart_toEndOf="@id/imgAuthor"
+        app:layout_constraintEnd_toStartOf="@id/textDate"
+        app:layout_constraintTop_toTopOf="@id/imgAuthor"
+        app:layout_constraintBottom_toBottomOf="@id/imgImg"
+        android:layout_marginStart="4dp"
+        android:layout_marginEnd="4dp"/>
+
+    <TextView
+        android:id="@+id/textDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/imgAuthor"
+        app:layout_constraintBottom_toBottomOf="@id/imgImg"
+        android:layout_marginEnd="8dp"
+        android:textSize="12sp"
+        android:textColor="@color/comm_cc"
+        tools:text="2020-07-06"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

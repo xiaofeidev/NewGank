@@ -1,0 +1,5 @@
+apply from: '../gradles/module.gradle'
+
+dependencies {
+    api project(path: ':lib_base')
+}

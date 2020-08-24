@@ -1,0 +1,6 @@
+include ':lib_inner'
+include ':lib_main'
+include ':lib_comm'
+include ':lib_base'
+include ':app'
+rootProject.name = "NewGank"
