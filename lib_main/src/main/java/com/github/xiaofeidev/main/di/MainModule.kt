@@ -21,8 +21,6 @@ val mainModule = module {
     viewModel { GanksViewModel(get()) }
     viewModel { GirlsViewModel(get()) }
     // MainRepository 单例
-    single<MainRepository> { MainRepositoryImpl() }
-    single<GankListRepository> { GankListRepositoryImpl() }
     single<GanksRepository> { GanksRepository() }
     single<TypesRepository> { TypesRepository() }
     single<GirlsRepository> { GirlsRepository() }

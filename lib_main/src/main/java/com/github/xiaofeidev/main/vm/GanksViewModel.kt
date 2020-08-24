@@ -7,11 +7,9 @@ import com.github.xiaofeidev.base.vm.BaseViewModel
 import com.github.xiaofeidev.comm.db.GankDatabase
 import com.github.xiaofeidev.comm.http.DataResult
 import com.github.xiaofeidev.comm.model.gank.GankBean
-import com.github.xiaofeidev.main.repository.GankListRepository
 import com.github.xiaofeidev.main.repository.GanksRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import java.io.IOException
 
 /**
  * @author xiaofei_dev
