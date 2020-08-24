@@ -3,5 +3,5 @@
 
 # 界面预览
 
-<img src="https://github.com/xiaofei-dev/NewGank/blob/master/art/preview1.jpg" width="24%" height="24%"><img src="https://github.com/xiaofei-dev/Gank/blob/master/art/enframe_2017-04-30-10-31-36.png" width="24%" height="24%">
-<img src="https://github.com/xiaofei-dev/NewGank/blob/master/art/preview2.jpg" width="24%" height="24%"><img src="https://github.com/xiaofei-dev/Gank/blob/master/art/enframe_2017-04-29-21-01-41.png" width="24%" height="24%">
+<img src="https://github.com/xiaofei-dev/NewGank/blob/master/art/preview1.jpg" width="24%" height="24%">
+<img src="https://github.com/xiaofei-dev/NewGank/blob/master/art/preview2.jpg" width="24%" height="24%">
