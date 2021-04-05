@@ -29,7 +29,6 @@ import com.github.xiaofeidev.comm.router.PAGE_GIRL
 import com.github.xiaofeidev.inner.R
 import com.github.xiaofeidev.inner.databinding.ActivityGirlBinding
 import com.github.xiaofeidev.inner.vm.GirlViewModel
-import kotlinx.android.synthetic.main.activity_girl.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.io.File
 
@@ -49,10 +48,10 @@ class GirlActivity : BaseActivity<ActivityGirlBinding>() {
     }
 
     override fun initView() {
-        setSupportActionBar(toolbar)
+        setSupportActionBar(binding.toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         //图片还未加载完成时显示正在加载
-        refresh.setOnRefreshListener { refresh.setRefreshing(false) }
+        binding.refresh.setOnRefreshListener { binding.refresh.setRefreshing(false) }
 
         Glide.with(this)
             .asBitmap()
@@ -80,7 +79,7 @@ class GirlActivity : BaseActivity<ActivityGirlBinding>() {
                     return false
                 }
             })
-            .into(imgImg)
+            .into(binding.imgImg)
     }
 
     override fun initData() {
@@ -91,7 +90,7 @@ class GirlActivity : BaseActivity<ActivityGirlBinding>() {
             isRefreshing.value = true
 
             isRefreshing.observe(this@GirlActivity){
-                refresh.isRefreshing = it
+                binding.refresh.isRefreshing = it
             }
         }
     }

@@ -17,7 +17,6 @@ import com.github.xiaofeidev.main.vm.GanksViewModel
 import com.yanyusong.y_divideritemdecoration.Y_Divider
 import com.yanyusong.y_divideritemdecoration.Y_DividerBuilder
 import com.yanyusong.y_divideritemdecoration.Y_DividerItemDecoration
-import kotlinx.android.synthetic.main.fragment_gank_list.*
 import kotlinx.coroutines.runBlocking
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -40,7 +39,7 @@ class GankListFragment: BaseFragment<FragmentGankListBinding>() {
 
     override fun initView() {
         mAdapter = GankAdapter()
-        recycler.apply {
+        binding.recycler.apply {
             layoutManager = LinearLayoutManager(context)
             adapter = mAdapter
             addItemDecoration(object : Y_DividerItemDecoration(context) {
@@ -64,7 +63,7 @@ class GankListFragment: BaseFragment<FragmentGankListBinding>() {
 
         mAdapter.setEmptyView(R.layout.layout_empty)
         initLoadMore()
-        refresh.setOnRefreshListener {
+        binding.refresh.setOnRefreshListener {
             runBlocking {
                 ganksViewModel.refresh()
             }
@@ -98,7 +97,7 @@ class GankListFragment: BaseFragment<FragmentGankListBinding>() {
             isRefreshing.value = true
 
             isRefreshing.observe(viewLifecycleOwner){
-                refresh.isRefreshing = it
+                binding.refresh.isRefreshing = it
             }
 
             firstPageResult.observe(viewLifecycleOwner){

@@ -11,7 +11,6 @@ import com.github.xiaofeidev.main.R
 import com.github.xiaofeidev.main.databinding.ActivityMainBinding
 import com.github.xiaofeidev.main.ui.adapter.MainPageAdapter
 import com.github.xiaofeidev.main.vm.MainViewModel
-import kotlinx.android.synthetic.main.activity_main.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainActivity : BaseActivity<ActivityMainBinding>() {
@@ -26,29 +25,29 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
 
     override fun initView() {
         viewModel.title.value = resources.getString(R.string.page_gank)
-        setSupportActionBar(toolbar)
+        setSupportActionBar(binding.toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(false)
         supportActionBar?.setDisplayShowHomeEnabled(false)
 
-        viewPager.adapter = MainPageAdapter(this)
-        viewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback(){
+        binding.viewPager.adapter = MainPageAdapter(this)
+        binding.viewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback(){
             override fun onPageSelected(position: Int) {
                 super.onPageSelected(position)
-                val menuItem = navigationBottom.menu.getItem(position)
+                val menuItem = binding.navigationBottom.menu.getItem(position)
                 menuItem.setChecked(true)
                 viewModel.title.value = menuItem.title.toString()
             }
         })
 
-        navigationBottom.setOnNavigationItemSelectedListener { menuItem ->
+        binding.navigationBottom.setOnNavigationItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
                 R.id.page_gank -> {
-                    viewPager.currentItem = 0
+                    binding.viewPager.currentItem = 0
                     viewModel.title.value = menuItem.title.toString()
                     return@setOnNavigationItemSelectedListener true
                 }
                 else -> {//R.id.girl
-                    viewPager.currentItem = 1
+                    binding.viewPager.currentItem = 1
                     viewModel.title.value = menuItem.title.toString()
                     return@setOnNavigationItemSelectedListener true
                 }

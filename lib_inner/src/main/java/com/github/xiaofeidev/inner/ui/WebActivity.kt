@@ -21,7 +21,6 @@ import com.github.xiaofeidev.comm.router.PAGE_WEB
 import com.github.xiaofeidev.inner.R
 import com.github.xiaofeidev.inner.databinding.ActivityWebBinding
 import com.github.xiaofeidev.inner.vm.WebViewModel
-import kotlinx.android.synthetic.main.activity_web.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
@@ -43,14 +42,14 @@ class WebActivity :BaseActivity<ActivityWebBinding>() {
 
     @SuppressLint("SetJavaScriptEnabled")
     override fun initView() {
-        setSupportActionBar(toolbar)
+        setSupportActionBar(binding.toolbar)
         setTitle(title)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         viewModel.isRefreshing.value = true
-        web.requestFocusFromTouch() //设置支持获取手势焦点
+        binding.web.requestFocusFromTouch() //设置支持获取手势焦点
 
-        val webSettings: WebSettings = web.getSettings()
+        val webSettings: WebSettings = binding.web.getSettings()
         webSettings.javaScriptEnabled = true //支持js
 
         webSettings.loadWithOverviewMode = true
@@ -58,8 +57,8 @@ class WebActivity :BaseActivity<ActivityWebBinding>() {
         webSettings.layoutAlgorithm = WebSettings.LayoutAlgorithm.NORMAL
         // 设置可以支持缩放
         webSettings.setSupportZoom(true)
-        web.webChromeClient = WebChromeClient()
-        web.setWebViewClient(object : WebViewClient() {
+        binding.web.webChromeClient = WebChromeClient()
+        binding.web.setWebViewClient(object : WebViewClient() {
             /**
              * desc：一般的正常加载无需覆盖此方法，使用默认回调就能正常加载网页
              */
@@ -90,10 +89,10 @@ class WebActivity :BaseActivity<ActivityWebBinding>() {
                 ToastUtils.showShort(R.string.comm_error)
             }
         })
-        web.loadUrl(url)
+        binding.web.loadUrl(url)
 
-        refresh.setOnRefreshListener {
-            web.reload()
+        binding.refresh.setOnRefreshListener {
+            binding.web.reload()
         }
     }
 
@@ -106,7 +105,7 @@ class WebActivity :BaseActivity<ActivityWebBinding>() {
             isRefreshing.value = true
 
             isRefreshing.observe(this@WebActivity){
-                refresh.isRefreshing = it
+                binding.refresh.isRefreshing = it
             }
         }
     }
@@ -147,8 +146,8 @@ class WebActivity :BaseActivity<ActivityWebBinding>() {
     }
 
     override fun onBackPressed() {
-        if (web.canGoBack()) {
-            web.goBack()
+        if (binding.web.canGoBack()) {
+            binding.web.goBack()
         } else {
             super.onBackPressed()
         }

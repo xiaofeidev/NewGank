@@ -3,7 +3,6 @@ package com.github.xiaofeidev.comm.model.gank
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
-import org.koin.ext.getScopeId
 
 /**
  * @author xiaofei_dev

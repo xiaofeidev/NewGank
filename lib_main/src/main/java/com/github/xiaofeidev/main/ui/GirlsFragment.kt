@@ -20,7 +20,6 @@ import com.github.xiaofeidev.main.vm.GirlsViewModel
 import com.yanyusong.y_divideritemdecoration.Y_Divider
 import com.yanyusong.y_divideritemdecoration.Y_DividerBuilder
 import com.yanyusong.y_divideritemdecoration.Y_DividerItemDecoration
-import kotlinx.android.synthetic.main.fragment_girls.*
 import kotlinx.coroutines.runBlocking
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -38,7 +37,7 @@ class GirlsFragment: BaseFragment<FragmentGirlsBinding>() {
 
     override fun initView() {
         mAdapter = GirlAdapter((ScreenUtils.getScreenWidth() / 2f * 1.5f).toInt())
-        recycler.apply {
+        binding.recycler.apply {
             layoutManager = GridLayoutManager(context, 2)
             adapter = mAdapter
             addItemDecoration(object : Y_DividerItemDecoration(context) {
@@ -61,7 +60,7 @@ class GirlsFragment: BaseFragment<FragmentGirlsBinding>() {
         }
         mAdapter.setEmptyView(R.layout.layout_empty)
         initLoadMore()
-        refresh.setOnRefreshListener {
+        binding.refresh.setOnRefreshListener {
             runBlocking {
                 girlsViewModel.refresh()
             }
@@ -91,7 +90,7 @@ class GirlsFragment: BaseFragment<FragmentGirlsBinding>() {
             isRefreshing.value = true
 
             isRefreshing.observe(viewLifecycleOwner){
-                refresh.isRefreshing = it
+                binding.refresh.isRefreshing = it
             }
 
             firstPageResult.observe(viewLifecycleOwner){

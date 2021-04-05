@@ -13,7 +13,6 @@ import com.github.xiaofeidev.main.databinding.FragmentMainBinding
 import com.github.xiaofeidev.main.ui.adapter.GankPageAdapter
 import com.github.xiaofeidev.main.vm.TypesViewModel
 import com.google.android.material.tabs.TabLayoutMediator
-import kotlinx.android.synthetic.main.fragment_main.*
 import kotlinx.coroutines.runBlocking
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -55,7 +54,7 @@ class MainFragment: BaseFragment<FragmentMainBinding>() {
                     //网络错误
                     ToastUtils.showShort(R.string.comm_error)
                     if (!viewModel.isShowType && !::errorView.isInitialized){
-                        errorView = layoutInflater.inflate(R.layout.layout_error, root, true).findViewById(R.id.error)
+                        errorView = layoutInflater.inflate(R.layout.layout_error, binding.root, true).findViewById(R.id.error)
                         errorView.findViewById<View>(R.id.btnRetry).setOnClickListener {
                             runBlocking {
                                 viewModel.refresh()
@@ -80,11 +79,11 @@ class MainFragment: BaseFragment<FragmentMainBinding>() {
         }
         val adapter = GankPageAdapter(this)
         adapter.typeList = typeList
-        viewPager.adapter = adapter
+        binding.viewPager.adapter = adapter
         for (type in typeList){
-            tabLayout.addTab(tabLayout.newTab())
+            binding.tabLayout.addTab(binding.tabLayout.newTab())
         }
-        TabLayoutMediator(tabLayout, viewPager) { tab, position ->
+        TabLayoutMediator(binding.tabLayout, binding.viewPager) { tab, position ->
             tab.text = typeList[position].title
         }.attach()
     }
